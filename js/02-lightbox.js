@@ -1,19 +1,18 @@
 import { galleryItems } from "./gallery-items.js";
 const gallery = document.querySelector(".gallery");
 gallery.insertAdjacentHTML("beforeend", createImageCarts(galleryItems));
-
+const lightbox = new SimpleLightbox(".gallery a", {
+    captionsData: "alt",
+    captionDelay: 250,
+    closeText: "x",
+    showCounter: false,
+});
 gallery.addEventListener("click", (e) => {
     e.preventDefault();
 
     if (e.target.nodeName !== "IMG") {
         return;
     }
-    const lightbox = new SimpleLightbox(".gallery a", {
-        captionsData: "alt",
-        captionDelay: 250,
-        closeText: "x",
-        showCounter: false,
-    });
 });
 
 function createImageCarts(galleryItems) {

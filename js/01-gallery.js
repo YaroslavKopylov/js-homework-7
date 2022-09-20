@@ -17,12 +17,6 @@ gallery.addEventListener("click", (e) => {
 `);
 
     instance.show();
-
-    gallery.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") {
-            instance.close();
-        }
-    });
 });
 
 function createImageCarts(galleryItems) {
