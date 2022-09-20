@@ -1,9 +1,20 @@
 import { galleryItems } from "./gallery-items.js";
 const gallery = document.querySelector(".gallery");
-
-gallery.addEventListener("click", handler);
-
 gallery.insertAdjacentHTML("beforeend", createImageCarts(galleryItems));
+
+gallery.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    if (e.target.nodeName !== "IMG") {
+        return;
+    }
+    const lightbox = new SimpleLightbox(".gallery a", {
+        captionsData: "alt",
+        captionDelay: 250,
+        closeText: "x",
+        showCounter: false,
+    });
+});
 
 function createImageCarts(galleryItems) {
     return galleryItems
@@ -13,17 +24,6 @@ function createImageCarts(galleryItems) {
           </a>`;
         })
         .join("");
-}
-function handler(e) {
-    if (e.target.nodeName !== "IMG") {
-        return;
-    }
-    let lightbox = new SimpleLightbox(".gallery a", {
-        captions: true,
-        captionPosition: "bottom",
-        captionDelay: 250,
-        captionsData: alt,
-    });
 }
 
 // gallery.addEventListener("click", (e) => {
